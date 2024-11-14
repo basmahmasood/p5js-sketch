@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Sun Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+</head>
+<body>
+    <script>
+        let sunHeight;
+        let horizon = 200;
+
+        function setup() {
+            createCanvas(1000, 1000);
+        }
+
+        function draw() {
+            background("#3CBEE8");
+
+            //sun follows y-coordinate of mouse
+            sunHeight = mouseY;
+
+            //light blue background if sun is above horizon
+            if (sunHeight < horizon) {
+                background("lightblue");
+            }
+
+            //dark blue background if sun is below horizon
+            if (sunHeight > horizon) {
+                background("rgb(23,24,75)");
+            }
+
+            // Draw the sun
+            push();
+            fill("#F3A517");
+            stroke("#F38206");
+            strokeWeight(40);
+            circle(500, sunHeight, 400);
+            pop();
+
+            // Add second sun layer
+            push();
+            fill("#F3A517");
+            stroke("#F38206");
+            strokeWeight(40);
+            ellipse(500, sunHeight, 200, 200);
+            pop();
+
+            // Add ocean
+            fill("#3C52E8");
+            rect(0, 500, 1000, 5000);
+        }
+    </script>
+</body>
+</html>
